@@ -20,7 +20,7 @@ public class Main {
             case 2 -> task2();    //Задание 2
             case 3 -> task3();    //Задание 3
             case 4 -> task4();    //Задание 4
-//            case 5 -> task5();    //Задание 5
+            case 5 -> task5();    //Задание 5
 //            case 6 -> task6();    //Задание 6
 //            case 7 -> task7();    //Задание 7
 //            case 8 -> task8();    //Задание 8
@@ -30,6 +30,30 @@ public class Main {
         }
         System.out.println("_________");
         System.out.println("Домашка закончилась. Всем спасибо, все свободны.");
+    }
+
+    private static void task5() {
+        System.out.println("Задание 5");
+        // Вычислить накопительныйй вклад, c 7% в месяц, пополнение 15000/мес.
+        // Вывести результат: «Месяц …, сумма накоплений равна … рублей»
+        // накопления за 6, 12, 18, 24-й и следующие месяцы.
+        // #23:34-23:33
+        //Инициализация
+        int vkladFinish = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какую сумму желаете накопить?"));
+        int vkladMount = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какую сумму готовы откладывать?"));
+        int vkladProcent = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какую процентную ставку дает вклад?"));
+        int total = 0, mount = 0;
+        //Вычисление
+        while (total<vkladFinish) {
+            total=total+total*vkladProcent/100+vkladMount;
+            if (mount % 6 == 0)
+                System.out.println("Через "+mount+" месяцев вы накопите нужную сумму равную "+total+" рублей.");
+            mount++;
+        }
+        System.out.println("В итоге, за "+mount+" месяцев вы накопите нужную сумму равную "+total+" рублей.");
     }
 
     private static void task4() {
@@ -46,7 +70,7 @@ public class Main {
                 "Какую процентную ставку дает вклад?"));
         int total = 0, mount = 0;
         //Вычисление
-        while (total<=vkladFinish) {
+        while (total<vkladFinish) {
             total=total+total*vkladProcent/100+vkladMount;
             mount++;
         }
@@ -110,7 +134,7 @@ public class Main {
                 "Какую сумму готовы откладывать?"));
         int total = 0, mount = 0;
         //Вычисление
-        while (total<=vkladFinish) {
+        while (total<vkladFinish) {
             total=total+vkladMount;
             mount++;
         }
