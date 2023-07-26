@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
 
 // Start    :24.07.23 15:47
 // Pause    :0
@@ -21,7 +19,7 @@ public class Main {
             case 1 -> task1();    //Задание 1
             case 2 -> task2();    //Задание 2
             case 3 -> task3();    //Задание 3
-//            case 4 -> task4();    //Задание 4
+            case 4 -> task4();    //Задание 4
 //            case 5 -> task5();    //Задание 5
 //            case 6 -> task6();    //Задание 6
 //            case 7 -> task7();    //Задание 7
@@ -32,6 +30,27 @@ public class Main {
         }
         System.out.println("_________");
         System.out.println("Домашка закончилась. Всем спасибо, все свободны.");
+    }
+
+    private static void task4() {
+        System.out.println("Задание 4");
+        // Вычислить накопительныйй вклад, c 7% в месяц, пополнение 15000/мес.
+        // Вывести результат: «Месяц …, сумма накоплений равна … рублей»
+        // #23:24-23:33
+        //Инициализация
+        int vkladFinish = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какую сумму желаете накопить?"));
+        int vkladMount = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какую сумму готовы откладывать?"));
+        int vkladProcent = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какую процентную ставку дает вклад?"));
+        int total = 0, mount = 0;
+        //Вычисление
+        while (total<=vkladFinish) {
+            total=total+total*vkladProcent/100+vkladMount;
+            mount++;
+        }
+        System.out.println("Через "+mount+" месяцев вы накопите нужную сумму равную "+total+" рублей.");
     }
 
     private static void task3() {
@@ -111,8 +130,7 @@ public class Main {
         int radiusTable = Integer.parseInt(JOptionPane.showInputDialog(null,
                 "Радиус таблицы R=? [1-5]"));
         int startX = focusTableX-radiusTable, startY = focusTableY-radiusTable,
-                stopX = focusTableX+radiusTable, stopY = focusTableY+radiusTable,
-                gradientX = 1, gradientY = 1;
+                stopX = focusTableX+radiusTable, stopY = focusTableY+radiusTable;
         //Решение
         for (int Yh = startY; Yh <= stopY; Yh++) outLine=outLine+Yh+"\t";
         System.out.println(outLine);
