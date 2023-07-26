@@ -19,7 +19,7 @@ public class Main {
         }
         switch (taskNumberRun) {
             case 1 -> task1();    //Задание 1
-//            case 2 -> task2();    //Задание 2
+            case 2 -> task2();    //Задание 2
 //            case 3 -> task3();    //Задание 3
 //            case 4 -> task4();    //Задание 4
 //            case 5 -> task5();    //Задание 5
@@ -32,6 +32,27 @@ public class Main {
         }
         System.out.println("_________");
         System.out.println("Домашка закончилась. Всем спасибо, все свободны.");
+    }
+
+    private static void task2() {
+        System.out.println("Задание 2");
+        // Вывести циклами while и for 2 строки с числами от 1-10
+        // 1 2 3 4 5 6 7 8 9 10
+        // 10 9 8 7 6 5 4 3 2 1
+        // #16:30-16:52
+        //Инициализация
+        int stepOut = 1;
+        String outLine = stepOut+"\t";
+        while (stepOut<10) {
+            stepOut++;
+            outLine=outLine+stepOut+"\t";
+        }
+        System.out.println(outLine);
+        outLine = "";
+        for (;stepOut>=1; stepOut--) {
+            outLine=outLine+stepOut+"\t";
+        }
+        System.out.println(outLine);
     }
 
     private static void task1() {
