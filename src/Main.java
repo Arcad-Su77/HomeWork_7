@@ -24,7 +24,7 @@ public class Main {
             case 5 -> task5();    //Задание 5
             case 6 -> task6();    //Задание 6
             case 7 -> task7();    //Задание 7
-//            case 8 -> task8();    //Задание 8
+            case 8 -> task8();    //Задание 8
 //            case 9 -> task9();    //Задание 9
             case 10 -> task10();    //Задание 10
             default -> System.out.println("Вы не выбрали задание!?: " + taskNumberRun);
@@ -33,12 +33,29 @@ public class Main {
         System.out.println("Домашка закончилась. Всем спасибо, все свободны.");
     }
 
+    private static void task8() {
+        System.out.println("Задание 8");
+        // Расчитать даты сдаци еженедельных отчетоа, каждую пчтницу..
+        // Вывести результат: «Сегодня пятница, ...-е число. Необходимо подготовить отчет»
+        // первая пятница dedLine=1..7
+        // #13:50-13:55
+        //Инициализация
+        int yaerBefore = 200;
+        int yaerAfter = 100;
+        int toYaer = 2023;
+        for (int yaer = 0; yaer<=(toYaer+yaerAfter); yaer+=79){
+            if ((yaer>= (toYaer-yaerBefore) && yaer <= (toYaer+yaerAfter))) {
+                System.out.println("Комета пролетит в: "+yaer);
+            }
+        }
+    }
+
     private static void task7() {
         System.out.println("Задание 7");
         // Расчитать даты сдаци еженедельных отчетоа, каждую пчтницу..
         // Вывести результат: «Сегодня пятница, ...-е число. Необходимо подготовить отчет»
         // первая пятница dedLine=1..7
-        // #00:28-00:10
+        // #00:28-00:40 10:00-13:40
         //Инициализация
         System.out.println("Напоминалка про отчет!");
         int dedLine = Integer.parseInt(JOptionPane.showInputDialog(null,
