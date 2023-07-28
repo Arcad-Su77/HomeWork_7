@@ -25,7 +25,7 @@ public class Main {
             case 6 -> task6();    //Задание 6
             case 7 -> task7();    //Задание 7
             case 8 -> task8();    //Задание 8
-//            case 9 -> task9();    //Задание 9
+            //case 9 -> task9();    //Задание 9
             case 10 -> task10();    //Задание 10
             default -> System.out.println("Вы не выбрали задание!?: " + taskNumberRun);
         }
