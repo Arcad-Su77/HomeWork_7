@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Calendar;
 
 // Start    :24.07.23 15:47
 // Pause    :0
@@ -22,7 +23,7 @@ public class Main {
             case 4 -> task4();    //Задание 4
             case 5 -> task5();    //Задание 5
             case 6 -> task6();    //Задание 6
-//            case 7 -> task7();    //Задание 7
+            case 7 -> task7();    //Задание 7
 //            case 8 -> task8();    //Задание 8
 //            case 9 -> task9();    //Задание 9
             case 10 -> task10();    //Задание 10
@@ -30,6 +31,63 @@ public class Main {
         }
         System.out.println("_________");
         System.out.println("Домашка закончилась. Всем спасибо, все свободны.");
+    }
+
+    private static void task7() {
+        System.out.println("Задание 7");
+        // Расчитать даты сдаци еженедельных отчетоа, каждую пчтницу..
+        // Вывести результат: «Сегодня пятница, ...-е число. Необходимо подготовить отчет»
+        // первая пятница dedLine=1..7
+        // #00:28-00:10
+        //Инициализация
+        System.out.println("Напоминалка про отчет!");
+        int dedLine = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Какой день недели отчетный?  [1-7, 1-ВС..7-СБ]"));
+        // Рассчет
+        Calendar today = Calendar.getInstance();
+        int dayOfMonth = today.get(Calendar.DAY_OF_MONTH);
+        int dayOfWeek = today.get(Calendar.DAY_OF_WEEK);
+        String dayOfDedLine = switch ((dedLine-dayOfWeek)) {
+            case 0 -> "сегодня";
+            case 1,-6 -> "завтра";
+            case 2,-5 -> "после завтра";
+            case 3,-4 -> "через 3 дня";
+            case 4,-3 -> "через 4 дня";
+            case 5,-2 -> "через 5 дней";
+            case 6,-1 -> "через 6 дней";
+            default -> throw new IllegalStateException("Срок сдачи не верен: "
+                    + dedLine + " " + dayOfWeek+ " " + ((dedLine+7)-(dayOfWeek)));
+        };
+        String dedLineOfWeek = switch (dedLine) {
+            case 1 -> "воскресенье";
+            case 2 -> "понедельник";
+            case 3 -> "вторник";
+            case 4 -> "среду";
+            case 5 -> "четверг";
+            case 6 -> "пятницу";
+            case 7 -> "субботу";
+            default -> throw new IllegalStateException("День сдачи отчета: " + dedLine);
+        };
+        String week = switch (today.get(Calendar.DAY_OF_WEEK)) {
+            case 1 -> "воскресенье";
+            case 2 -> "понедельник";
+            case 3 -> "вторник";
+            case 4 -> "среда";
+            case 5 -> "четверг";
+            case 6 -> "пятница";
+            case 7 -> "суббота";
+            default -> throw new IllegalStateException("Unexpected value: " + today.get(Calendar.DAY_OF_WEEK));
+        };
+        System.out.println("Сегодня " + dayOfMonth + "-e, " + week+ ", отчет сдавать в "
+                +dedLineOfWeek+ " - " +dayOfDedLine+"!");
+
+        System.out.println("\n\nРешение по критериям.");
+        int dayFerstFR = dedLine; //Введенный день отчета = дата первой пятницы
+        for (int day = 1; day<=31; day++){
+            if ((dayFerstFR-day) % 7 == 0 || day == dayFerstFR) {
+                System.out.println("Сегодня пятница, "+day+"-е число. Необходимо подготовить отчет");
+            }
+        }
     }
 
     private static void task6() {
