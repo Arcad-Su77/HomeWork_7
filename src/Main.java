@@ -25,12 +25,39 @@ public class Main {
             case 6 -> task6();    //Задание 6
             case 7 -> task7();    //Задание 7
             case 8 -> task8();    //Задание 8
-//            case 9 -> task9();    //Задание 9
+            case 9 -> task9();    //Задание 9
             case 10 -> task10();    //Задание 10
+            case 11 -> task11();
             default -> System.out.println("Вы не выбрали задание!?: " + taskNumberRun);
         }
         System.out.println("_________");
         System.out.println("Домашка закончилась. Всем спасибо, все свободны.");
+    }
+
+    private static void task11() {
+        int number = 10;
+        for (; number >= 2; number--) {
+            int f0 = 0, f1 = 1;
+            int fib = 0;
+            for (int i = 2; i <= number; i++) {
+                fib = f0 + f1;
+                f0 = f1;
+                f1 = fib;
+            }
+            System.out.println(number + " - " + fib);
+        }
+    }
+
+    private static void task9() {
+        int number = 54235;
+        int revers = 0;
+        int temp = number;
+        while (temp != 0) {
+            int decimal = temp % 10;
+            revers = revers * 10 + decimal;
+            temp = temp / 10;
+        }
+        System.out.println(number == revers);
     }
 
     private static void task8() {
@@ -44,7 +71,7 @@ public class Main {
         int yaerAfter = 100;
         int toYaer = 2023;
         for (int yaer = 0; yaer<=(toYaer+yaerAfter); yaer+=79){
-            if ((yaer>= (toYaer-yaerBefore) && yaer <= (toYaer+yaerAfter))) {
+            if (yaer>= toYaer-yaerBefore) {
                 System.out.println("Комета пролетит в: "+yaer);
             }
         }
@@ -95,15 +122,20 @@ public class Main {
             case 7 -> "суббота";
             default -> throw new IllegalStateException("Unexpected value: " + today.get(Calendar.DAY_OF_WEEK));
         };
-        System.out.println("Сегодня " + dayOfMonth + "-e, " + week+ ", отчет сдавать в "
-                +dedLineOfWeek+ " - " +dayOfDedLine+"!");
+        System.out.println("Сегодня " + dayOfMonth + "-e, " + week + ", отчет сдавать в "
+                + dedLineOfWeek + " - " + dayOfDedLine + "!");
 
         System.out.println("\n\nРешение по критериям.");
         int dayFerstFR = dedLine; //Введенный день отчета = дата первой пятницы
-        for (int day = 1; day<=31; day++){
-            if ((dayFerstFR-day) % 7 == 0 || day == dayFerstFR) {
-                System.out.println("Сегодня пятница, "+day+"-е число. Необходимо подготовить отчет");
+        for (int day = 1; day <= 31; day++) {
+            if ((dayFerstFR - day) % 7 == 0 || day == dayFerstFR) {
+                System.out.println("Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет");
             }
+        }
+        System.out.println("\n\nРешение по критериям 2.");
+        // int dayFerstFR = dedLine; //Введенный день отчета = дата первой пятницы
+        for (int day = dayFerstFR; day <= 31; day += 7) {
+            System.out.println("Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет");
         }
     }
 
